@@ -7,22 +7,49 @@ class Container extends React.Component {
     super(props);
     this.state = {
       groceryListItem: [
-        { id: 1, title: "Manzana" },
-        { id: 2, title: "Paquete de leche" },
+        { id: 1, title: "Manzana", amount: 1 },
+        { id: 2, title: "Paquete de leche", amount: 1 },
       ],
-      shoppingListItems: [],
+      shoppingListItems: [{ id: 1, title: "chocola", amount: 3 }],
+      id: 2,
     };
     this.emptyCart = this.emptyCart.bind(this);
     this.addNewItemsToCart = this.addNewItemsToCart.bind(this);
+    this.addAmountToItem = this.addAmountToItem.bind(this);
+  }
+
+  addAmountToItem(stateFound) {
+    const shoppingListItems = [...this.state.shoppingListItems];
+    shoppingListItems.map((item) => {
+      if (stateFound.title === item.title) {
+        this.setState(() => {
+          item.amount = item.amount + 1;
+        });
+      }
+      return this.setState({
+        shoppingListItems,
+        id: item.id,
+        title: item.title,
+        amount: item.amount,
+      });
+    });
   }
 
   addNewItemsToCart(e) {
-    this.setState({
-      ...this.state.shoppingListItems.push({
-        id: e.timeStamp,
+    const shoppingListItems = [...this.state.shoppingListItems];
+    for (let i = 0; i < shoppingListItems.length; i++) {
+      if (shoppingListItems[i].title === e.target.innerText) {
+        return this.addAmountToItem(shoppingListItems[i]);
+      }
+    }
+
+    return this.setState((state) =>
+      state.shoppingListItems.push({
+        id: state.id++,
         title: e.target.innerText,
-      }),
-    });
+        amount: 1,
+      })
+    );
   }
 
   emptyCart() {
@@ -39,6 +66,7 @@ class Container extends React.Component {
 
         <ShoppingCart
           list={this.state.shoppingListItems}
+          showQuantities={true}
           emptyCart={this.emptyCart}
         />
       </div>

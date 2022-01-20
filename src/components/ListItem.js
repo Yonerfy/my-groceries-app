@@ -1,7 +1,15 @@
 import React from "react";
 
 function ListItem(props) {
-  return <p onClick={props.addNewItemsToCart}> {props.title}</p>;
+  // console.log(props);
+  return props.showQuantities === true ? (
+    <p onClick={props.addNewItemsToCart}>
+      {" "}
+      {props.title} {`Amount: ${props.amount}`}
+    </p>
+  ) : (
+    <p onClick={props.addNewItemsToCart}> {props.title}</p>
+  );
 }
 
 export default ListItem;
