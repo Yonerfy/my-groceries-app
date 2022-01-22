@@ -30,7 +30,7 @@ class GroceryList extends React.Component {
   render() {
     return (
       <div>
-        <h1>GroceryList</h1>
+        <h1 className="primary-header">Shopping list</h1>
         <InputField
           groceryListItem={this.state.groceryListItem}
           handlerTextBox={this.handlerTextBox}

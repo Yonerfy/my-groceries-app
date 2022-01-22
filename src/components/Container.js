@@ -7,8 +7,8 @@ class Container extends React.Component {
     super(props);
     this.state = {
       groceryListItem: [
-        { id: 1, title: "Manzana", amount: 1 },
-        { id: 2, title: "Paquete de leche", amount: 1 },
+        { id: 1, title: "Appels", amount: 1 },
+        { id: 2, title: "Oatmeal", amount: 1 },
       ],
       shoppingListItems: [{ id: 1, title: "chocola", amount: 3 }],
       id: 2,
@@ -58,7 +58,7 @@ class Container extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className="container">
         <GroceryList
           list={this.state.groceryListItem}
           addNewItemsToCart={this.addNewItemsToCart}

@@ -2,12 +2,13 @@ import React from "react";
 import List from "./List";
 
 function ShoppingCart(props) {
-  //console.log(props);
   return (
-    <div>
-      <h1>ShoppingCart</h1>
-      <button onClick={props.emptyCart}>empty cart</button>
-      <List list={props.list} showQuantities={true} />
+    <div className="shopping-card-div">
+      <h1 className="primary-header">ShoppingCart</h1>
+      <button className="primary-btn" onClick={props.emptyCart}>
+        empty cart
+      </button>
+      <List list={props.list} showQuantities={props.showQuantities} />
     </div>
   );
 }

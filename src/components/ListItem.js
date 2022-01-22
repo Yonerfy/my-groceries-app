@@ -1,14 +1,15 @@
 import React from "react";
 
 function ListItem(props) {
-  // console.log(props);
   return props.showQuantities === true ? (
-    <p onClick={props.addNewItemsToCart}>
-      {" "}
-      {props.title} {`Amount: ${props.amount}`}
-    </p>
+    <div onClick={props.addNewItemsToCart}>
+      <span> {props.title}</span>
+      <span>{`Amount: ${props.amount}`}</span>
+    </div>
   ) : (
-    <p onClick={props.addNewItemsToCart}> {props.title}</p>
+    <div onClick={props.addNewItemsToCart}>
+      <span>{props.title} </span>
+    </div>
   );
 }
 

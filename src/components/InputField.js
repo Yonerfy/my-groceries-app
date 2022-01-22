@@ -2,15 +2,18 @@ import React from "react";
 
 class InputField extends React.Component {
   render() {
-    //console.log(this.props);
     return (
       <div>
         <input
+          className="shopping-list-input"
           type="text"
           onChange={this.props.handlerTextBox}
+          placeholder="Add a grocery item"
           value={this.props.groceryListItem}
         />
-        <button onClick={this.props.handlerClick}>Add</button>
+        <button className="primary-btn" onClick={this.props.handlerClick}>
+          Add
+        </button>
       </div>
     );
   }
